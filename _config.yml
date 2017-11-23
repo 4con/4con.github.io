@@ -10,7 +10,7 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "zh_CN"
-title                    : "Change world even one bit"
+title                    : "Gavxin's blog"
 title_separator          : "-"
 name                     : "4con"
 description              : "Just some words"
