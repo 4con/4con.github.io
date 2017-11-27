@@ -7,6 +7,6 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-.article-wrap p {
+.page__inner-wrap p {
   font-size: 16px;
 }
