@@ -8,10 +8,17 @@
 @import "minimal-mistakes"; // main partials
 
 html {
-  /* apply a natural box layout model to all elements */
-  box-sizing: border-box;
-  background-color: $background-color;
-  font-size: 16px;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+  font-size: 16px; // change to whatever
+
+  @include breakpoint($medium) {
+    font-size: 16px; // change to whatever
+  }
+
+  @include breakpoint($large) {
+    font-size: 16px; // change to whatever
+  }
+
+  @include breakpoint($x-large) {
+    font-size: 18px; // change to whatever
+  }
 }
