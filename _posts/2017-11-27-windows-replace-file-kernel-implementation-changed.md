@@ -16,15 +16,15 @@ Office 系列的产品在保存文件时，不会直接在原文件上做操作�
 
 发现这样的问题时，首先想到的是在 1709 新版本中，文件重命名操作出现了什么问题，所以拿着 FileSpy 工具看了一下。
 
-> ![FileSpy](http://www.zezula.net/en/fstools/filespy.html) 是个跟踪文件系统 IRP 的工具，文件系统、文件系统过滤驱动开发者会经常使用此工具排查问题
+> [FileSpy](http://www.zezula.net/en/fstools/filespy.html) 是个跟踪文件系统 IRP 的工具，文件系统、文件系统过滤驱动开发者会经常使用此工具排查问题
 
 之前主要在 Windows 7 平台上调试的比较多， Windows 10 1709 跟踪保存操作的 IRP 中发现了较多的不认识的 IRP ，也没有找到 IRP_MJ_SET_INFORMATION 的 FileRenameInformation 。但是发现了一些 FileSpy 工具没有解析成功的内容 IRP_MJ_SET_INFORMATION 00000041 ， 41 对应的十进制是 65 。
 
 > 几乎所有重命名操作，会与 IRP_MJ_SET_INFORMATION FileRenameInformation 这个 IRP 有关。
 
-后来打开 WDK 的 C 头文件找到 FILE_INFORMATION_CLASS 的定义，发现 65 对应的是 FileRenameInformationEx ，打开 MSDN 的 FILE_INFORMATION_CLASS 对应的 ![文档](https://msdn.microsoft.com/en-us/library/windows/hardware/ff728840(v=vs.85).aspx) 只是简单了说了 A FILE_RENAME_INFORMATION structure which contains additional flags. This value is available starting with Windows 10, version 1709. 并没有说这个 additional flags 是什么，具体与 FileRenameInformation 的区别是什么。
+后来打开 WDK 的 C 头文件找到 FILE_INFORMATION_CLASS 的定义，发现 65 对应的是 FileRenameInformationEx ，打开 MSDN 的 FILE_INFORMATION_CLASS 对应的 [文档](https://msdn.microsoft.com/en-us/library/windows/hardware/ff728840(v=vs.85).aspx) 只是简单了说了 A FILE_RENAME_INFORMATION structure which contains additional flags. This value is available starting with Windows 10, version 1709. 并没有说这个 additional flags 是什么，具体与 FileRenameInformation 的区别是什么。
 
-Office 16 之前一直用过没有问题，这次出问题肯定是内核里的实现变化了，之前没有仔细跟过 Office 的应用层调用的 API ，这次拿 ![API Monitor](http://www.rohitab.com/apimonitor) 工具看了一下所调用的应用层 API ，发现使用了 `ReplaceFile` API 。
+Office 16 之前一直用过没有问题，这次出问题肯定是内核里的实现变化了，之前没有仔细跟过 Office 的应用层调用的 API ，这次拿 [API Monitor](http://www.rohitab.com/apimonitor) 工具看了一下所调用的应用层 API ，发现使用了 `ReplaceFile` API 。
 
 ## 结论
 
