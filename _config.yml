@@ -10,9 +10,9 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "zh_CN"
-title                    : "Gavxin's blog"
+title                    : "Blog"
 title_separator          : "-"
-name                     : "4con"
+name                     : "Gavin Xin"
 description              : "Just some words"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -84,11 +84,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Gavxin"
+  name             : "Gavin Xin"
   avatar           : "/assets/images/avatar.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am a software engineer."
+  bio              : "'General' developer."
   location         : "Earth"
-  email            : "im@gavxin.com"
+  email            : "gavxin@gmail.com"
   uri              :
   bitbucket        :
   codepen          :
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "4con"
+  github           : "gavxin"
   gitlab           :
   google_plus      :
   keybase          :
